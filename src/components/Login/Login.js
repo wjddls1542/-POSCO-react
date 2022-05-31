@@ -1,4 +1,4 @@
-import { Button } from 'reactstrap';
+import { Button, Container } from 'reactstrap';
 import './Login.css';
 
 const Login = () => {
@@ -16,11 +16,13 @@ const Login = () => {
                <Button>로그인</Button>
             </div>
          </div>
-         <div className="Box">
-            <p>
-               계정이 없으신가요? <a href="">가입하기</a>
-            </p>
-         </div>
+         <Container className="bg-light border">
+            <Row style={{ padding: '1em', textAlign: 'center' }}>
+               <p>
+                  계정이 없으신가요? <a href="join">가입하기</a>
+               </p>
+            </Row>
+         </Container>
       </div>
    );
 };
