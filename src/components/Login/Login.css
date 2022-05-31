@@ -42,3 +42,8 @@
    text-overflow: ellipsis;
    text-transform: inherit;
 }
+.LoginForm {
+   display: flex;
+   flex-direction: column;
+   gap: 1em;
+}
