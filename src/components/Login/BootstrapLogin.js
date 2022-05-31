@@ -21,7 +21,7 @@ const BootstrapLogin = () => {
 
    const onSubmitLogin = e => {
       e.preventDefault();
-      const findUser = Users.find(data => data.userId === user.id && data.password === user.password);
+      const findUser = users.find(data => data.userId === user.id && data.password === user.password);
       console.log(user);
       if (findUser) {
          //로그인 후 로직
