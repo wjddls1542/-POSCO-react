@@ -1,9 +1,7 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../../store/UserContext';
 import './ProfileUpdate.css';
-import { Modal } from 'reactstrap';
-import ProfileUpdateHeader from './ProfileUpdateHeader';
-import ProfileUpdateBody from './ProfileUpdateBody';
+import { Button, Input, InputGroup, InputGroupText, Modal } from 'reactstrap';
 const ProfileUpdate = ({ img = '/img/profile/profile.jpg', name = 'park', isOpen, modalClose }) => {
    const [form, setForm] = useState({
       name,
@@ -24,6 +22,7 @@ const ProfileUpdate = ({ img = '/img/profile/profile.jpg', name = 'park', isOpen
       const { value } = e.target;
       setForm({ ...form, name: value });
    };
+
    const { updateUsers } = useContext(UserContext);
    const onSubmit = () => {
       updateUsers(form);
@@ -37,3 +36,35 @@ const ProfileUpdate = ({ img = '/img/profile/profile.jpg', name = 'park', isOpen
    );
 };
 export default ProfileUpdate;
+
+const ProfileUpdateHeader = ({ modalClose, onSubmit }) => {
+   return (
+      <div className="profileUpdateHeader">
+         <Button outline color="secondary" onClick={modalClose}>
+            취소
+         </Button>
+         <b>프로필 수정</b>
+         <Button outline color="primary" onClick={onSubmit}>
+            수정
+         </Button>
+      </div>
+   );
+};
+
+const ProfileUpdateBody = ({ onChangeFile, onChangeName, form }) => {
+   return (
+      <div className="profileUpdateForm">
+         <Input type="file" hidden accept="image/*" id="imgUpload" onChange={e => onChangeFile(e)}></Input>
+         <label htmlFor="imgUpload">
+            <div className="profileImgBox">
+               <img className="profileImg" src={form.img} alt="myProfileImg"></img>
+            </div>
+         </label>
+
+         <InputGroup>
+            <InputGroupText>이름</InputGroupText>
+            <Input type="text" value={form.name} onChange={e => onChangeName(e)}></Input>
+         </InputGroup>
+      </div>
+   );
+};

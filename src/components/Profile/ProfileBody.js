@@ -2,7 +2,6 @@ import './ProfileBody.css';
 import { Button } from 'reactstrap';
 import { useState } from 'react';
 import ProfileUpdate from './ProfileUpdate';
-import { Link } from 'react-router-dom';
 
 const ProfileBody = ({
    posts = new Array(5),
@@ -18,7 +17,6 @@ const ProfileBody = ({
    const modalOpen = () => {
       setIsOpen(true);
    };
-   <ProfileUpdate img={img} name={name} isOpen={isOpen} modalClose={modalClose}></ProfileUpdate>;
 
    return (
       <>
@@ -45,15 +43,14 @@ const ProfileBody = ({
             </div>
          </div>
          <div className="profileBodyButtonBox">
-            <Link to={'/profileupdate'}>
-               <Button block color="light">
-                  프로필 편집
-               </Button>
-            </Link>
+            <Button block color="light" onClick={modalOpen}>
+               프로필 편집
+            </Button>
             <Button block color="light">
                보관함 보기
             </Button>
          </div>
+         <ProfileUpdate img={img} name={name} isOpen={isOpen} modalClose={modalClose}></ProfileUpdate>
       </>
    );
 };

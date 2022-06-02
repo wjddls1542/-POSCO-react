@@ -15,7 +15,6 @@ import { PostContext } from './store/PostContext';
 import { FollowContext } from './store/FollowContext';
 import { Post } from './data/Post';
 import { Follow } from './data/Follow';
-import ProfileUpdate from './components/Profile/ProfileUpdate';
 
 function App() {
    const [users, setUsers] = useState(Users);
@@ -32,7 +31,7 @@ function App() {
          return;
       }
       const newUsers = [...users];
-      newUsers.splice(findUsersIndex, 1, { ...users[findUsersIndex], name, img });
+      newUsers.splice(findUsersIndex, 1, { ...users[findUsersIndex], name, img }); //splice배열자르기
       setUsers(newUsers);
    };
    const [posts, setPosts] = useState(Post);
@@ -56,7 +55,6 @@ function App() {
                         <Route path="shopping" element={<Main></Main>}></Route>
                         <Route path="profile" element={<Profile></Profile>}></Route>
                      </Route>
-                     <Route index path="profileupdate" element={<ProfileUpdate></ProfileUpdate>}></Route>y
                      <Route index path="/login" element={<BootstrapLogin></BootstrapLogin>}></Route>
                      <Route index path="/*" element={<Page404></Page404>}></Route>
                      <Route index path="/join" element={<Join></Join>}></Route>
